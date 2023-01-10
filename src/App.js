@@ -1,19 +1,10 @@
 import './App.css';
-import Search from './Search';
+import BodyOfDictionary from './BodyOfDictionary';
 
 function App() {
   return (
     <div className="App">
-     <div className="container">
-      <div className='row'>
-        <div className='col-6'>
-
-        </div>
-        <div className='col-6'>
-          <Search />
-        </div>
-      </div>
-     </div>
+     <BodyOfDictionary defaultWord="love" />
     </div>
   );
 }
