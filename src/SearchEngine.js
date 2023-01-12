@@ -4,22 +4,13 @@ import "./SearchEngine.css";
 import axios from 'axios';
 
 export default function SearchEngine (props) {
-  const [wordData , setWordData] = useState({ready:false});
-  const [word , setWord] =  useState(props.defaultWord);
+  const [loaded , setLoaded] = useState(false);
+  const [keyword , setKeyword] =  useState(props.defaultKeyword);
+  const [results, setResults] = useState(null);
+  
   function handleResponse (response){
-   console.log(response);
-   setWordData({
-    ready:true, 
-    word: response.data[0].word,
-    audio: response.data[0].phonetics[0].audio !== "" ? response.data[0].phonetics[0].audio : response.data[0].phonetics[1].audio !== "" ? response.data[0].phonetics[1].audio : response.data[0].phonetics[2].audio !== "" ? response.data[0].phonetics[2].audio : null,
-    transciption: response.data[0].phonetics[0].text,
-    meaning: response.data[0].meanings[0].partOfSpeech,
-    definition: response.data[0].meanings[0].definitions[0].definition,
-    synonym1: response.data[0].meanings[0].synonyms[0],
-    synonym2: response.data[0].meanings[0].synonyms[1],
-    synonym3: response.data[0].meanings[0].synonyms[2],
-
-     })
+   console.log(response.data[0]);
+   setResults(response.data[0]);
   }
 
   function handleSubmit(event) {
@@ -27,14 +18,26 @@ export default function SearchEngine (props) {
     search();
   }
   function updateWord(event) {
-    setWord(event.target.value);
+    setKeyword(event.target.value);
   }
 
   function search (){
-    const urlApi = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-  axios.get(urlApi).then(handleResponse);
+    
+    // documentation https://dictionaryapi.dev/
+    
+    const urlApi = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
+    
+    // axios call to the dictionary API 
+    
+    axios.get(urlApi).then(handleResponse);
   }
-if(wordData.ready){
+
+  function load (){
+    setLoaded(true);
+    search();
+  }
+
+if(loaded){
     return (
         <div className='SearchEngine'>
         <div className="container border border-light">
@@ -51,15 +54,14 @@ if(wordData.ready){
         </form>
         </div>
         <div className='col-6'>
-          <Results data={wordData} />
+          <Results results={results} />
         </div>
       </div>
      </div>
      </div>
     )
 }else{
-  search();
-  console.log(wordData);
-  return 'Loading ...'
+load();
+  return <h2 className='text-white'>Loading ...</h2>
 }
 }

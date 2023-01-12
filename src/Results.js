@@ -1,46 +1,50 @@
 import React from 'react';
+import Meaning from './Meaning';
+import Phonetics from './Phonetics';
+import Transcription from './Transcription';
+
 
 export default function Results (props){
+    if(props.results){
     return (
-        <div className='Results'>
-            <div className='container'>
+        <div className='container Results'>
                 <div className='row'>
+                    {/* Word  and Phonetics*/}
                     <div className='col-12' align='center'>
-                        <h2 className='definition' >{props.data.word}</h2>
-                         <span className='phonetic-sound'>
-                          <a href={props.data.audio} >audio</a>
+                        <h2 className='keyword' >{props.results.word}
+                         <span >
+                          {props.results.phonetics.map((phonetic, index)=> {
+                            if(index < 1){
+                                return (
+                                    <span className="phonetic-sound" key={index}>
+                                    <Phonetics phonetic={phonetic} />
+                                    </span>
+                                )
+                            }else{
+                                return null;
+                            }
+                          })}
                          </span>
-                        <div className='phonetic-transciption'>{props.data.transcription}</div>
+                        </h2>
+
+                        <Transcription phonetic={props.results.phonetics} />
                     </div>
                 </div>
-                <div className='row'>
-                    <div className='col-12'>
-                        <h4 className='meanings-type'>{props.data.meaning}</h4>
-                    </div>
-                    <div className='col-12'>
-                        <p className='definition'>{props.data.definition}</p>
-                    </div>
-                    <div className='col-12'>
-                        <em><p className='example'>The innkeeper brought them food and drink.</p></em>
-                    </div>
-                    <div className='col-12'>
-                        <p className='definition'>
-                        • A foodstuff
-                        </p>
-                    </div>
-                <div className='synonyms row'>
-                    <div className='synonym-word col-12' align='center'>
-                    {props.data.synonym1}
-                    </div>
-                    <div className='synonym-word col-12' align='center'>
-                    {props.data.synonym2}
-                    </div>
-                    <div className='synonym-word col-12' align='center'>
-                    {props.data.synonym3}
-                    </div>
-                </div>
-                </div>
-            </div>
+                {/* Meaning of the word , with or without synonyms , depends on the info returned by API call */}
+                <div className='col-12'>
+                    {props.results.meanings.map((meaning , index)=>{
+                        return(
+                            <div key={index}>
+                            <Meaning meaning={meaning}/>
+                            </div>)
+                        }
+                    )}
+                 </div>
         </div>
+
+    
     )
+    }else{
+        return null ;
+    }
 }

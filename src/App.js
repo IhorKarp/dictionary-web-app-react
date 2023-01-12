@@ -4,7 +4,7 @@ import SearchEngine from './SearchEngine';
 function App() {
   return (
     <div className="App">
-     <SearchEngine defaultWord="love" />
+     <SearchEngine defaultKeyword="love" />
     </div>
   );
 }
