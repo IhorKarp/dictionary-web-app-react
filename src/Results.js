@@ -14,7 +14,7 @@ export default function Results (props){
                         <h2 className='keyword' >{props.results.word}
                          <span >
                           {props.results.phonetics.map((phonetic, index)=> {
-                            if(index < 1){
+                            if( index < 1  && phonetic !== "" ){
                                 return (
                                     <span className="phonetic-sound" key={index}>
                                     <Phonetics phonetic={phonetic} />

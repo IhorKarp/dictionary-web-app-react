@@ -2,15 +2,21 @@ import React , { useState } from 'react';
 import Results from './Results';
 import "./SearchEngine.css";
 import axios from 'axios';
+import Photos from "./Photos";
 
 export default function SearchEngine (props) {
   const [loaded , setLoaded] = useState(false);
   const [keyword , setKeyword] =  useState(props.defaultKeyword);
   const [results, setResults] = useState(null);
+  let [photos, setPhotos] = useState(null);
   
   function handleResponse (response){
    console.log(response.data[0]);
    setResults(response.data[0]);
+  }
+
+  function handlePexelsResponse(response) {
+    setPhotos(response.data.photos);
   }
 
   function handleSubmit(event) {
@@ -30,6 +36,16 @@ export default function SearchEngine (props) {
     // axios call to the dictionary API 
     
     axios.get(urlApi).then(handleResponse);
+
+    // Pexels Url + Call
+
+    let pexelsApiKey =
+      "563492ad6f917000010000017139843c0ff54232a308ef55d1da89ba";
+    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=3`;
+    let headers = { Authorization: `Bearer ${pexelsApiKey}` };
+    // axios call to the Pexels photos API
+    axios.get(pexelsApiUrl, { headers }).then(handlePexelsResponse);
+
   }
 
   function load (){
@@ -53,9 +69,14 @@ if(loaded){
                 </div>
         </form>
         </div>
+        {/* Results component*/}
         <div className='col-6'>
           <Results results={results} />
         </div>
+        {/* Photos component*/}
+        <div className="col-12 ">
+                    <Photos photos={photos} />
+                  </div>
       </div>
      </div>
      </div>
