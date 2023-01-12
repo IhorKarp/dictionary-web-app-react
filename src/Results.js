@@ -8,7 +8,7 @@ export default function Results (props){
                     <div className='col-12' align='center'>
                         <h2 className='definition' >{props.data.word}</h2>
                          <span className='phonetic-sound'>
-                          <a href={props.data.audio} >Audio</a>
+                          <a href={props.data.audio} >audio</a>
                          </span>
                         <div className='phonetic-transciption'>{props.data.transcription}</div>
                     </div>

@@ -1,10 +1,10 @@
 import './App.css';
-import BodyOfDictionary from './BodyOfDictionary';
+import SearchEngine from './SearchEngine';
 
 function App() {
   return (
     <div className="App">
-     <BodyOfDictionary defaultWord="love" />
+     <SearchEngine defaultWord="love" />
     </div>
   );
 }

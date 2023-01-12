@@ -1,9 +1,9 @@
 import React , { useState } from 'react';
 import Results from './Results';
-import "./BodyOfDictionary.css";
+import "./SearchEngine.css";
 import axios from 'axios';
 
-export default function BodyOfDictionary (props) {
+export default function SearchEngine (props) {
   const [wordData , setWordData] = useState({ready:false});
   const [word , setWord] =  useState(props.defaultWord);
   function handleResponse (response){
@@ -11,8 +11,8 @@ export default function BodyOfDictionary (props) {
    setWordData({
     ready:true, 
     word: response.data[0].word,
-    audio: response.data[0].phonetics[2].audio,
-    transciption: response.data[0].phonetics[1].text,
+    audio: response.data[0].phonetics[0].audio !== "" ? response.data[0].phonetics[0].audio : response.data[0].phonetics[1].audio !== "" ? response.data[0].phonetics[1].audio : response.data[0].phonetics[2].audio !== "" ? response.data[0].phonetics[2].audio : null,
+    transciption: response.data[0].phonetics[0].text,
     meaning: response.data[0].meanings[0].partOfSpeech,
     definition: response.data[0].meanings[0].definitions[0].definition,
     synonym1: response.data[0].meanings[0].synonyms[0],
@@ -36,8 +36,8 @@ export default function BodyOfDictionary (props) {
   }
 if(wordData.ready){
     return (
-        <div className='BodyOfDictionary'>
-        <div className="container border border-dark">
+        <div className='SearchEngine'>
+        <div className="container border border-light">
       <div className='row'>
         <div className='col-6 text-center'>
           <h2>Search Words</h2>
@@ -46,7 +46,7 @@ if(wordData.ready){
                    <input type='text' placeholder='food' className="search-input" autoFocus={true} onChange={updateWord} />
                 </div>
                 <div className='col-3'>
-                   <input type='submit' className="button-input" />
+                   <button  className="button-input rounded ">Search</button>
                 </div>
         </form>
         </div>
