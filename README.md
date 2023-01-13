@@ -4,7 +4,7 @@ https://sensational-zuccutto-be1fc8.netlify.app/
 
 You can search any word in English and it will give you definitions, examples, synonyms, transription and audio of the word and even you can see pictures about this word from Pexels.
 
-![image](https://user-images.githubusercontent.com/119017588/212412361-517faa57-109f-4003-8e92-84c7e79c6cc9.png)
+![image](https://user-images.githubusercontent.com/119017588/212430190-a1f4784b-84e6-4d73-a357-e2412d5cbf64.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
