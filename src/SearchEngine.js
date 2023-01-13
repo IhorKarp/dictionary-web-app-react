@@ -57,22 +57,24 @@ export default function SearchEngine (props) {
 
 if(loaded){
     return (
+
         <div className='SearchEngine'>
         <div className="container border border-light border-3 rounded-4">
       <div className='row'>
-        <div className='col-6 text-center'>
+        {/* Search Engine Component */}
+        <div className='col-sm-6 col-12 text-center'>
           <h1>Search Words</h1>
-            <form className='row mt-3' onSubmit={handleSubmit}>
-                <div className='col-8'>
+            <form className='row justify-content-center mt-3' onSubmit={handleSubmit}>
+                <div className='col-sm-8 col-7'>
                    <input type='text' placeholder='  Type here...' className="search-input border border-light rounded-4" autoFocus={true} onChange={updateWord} />
                 </div>
-                <div className='col-auto'>
-                   <button className="search-button bg-transparent border border-0 ps-3" ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                <div className='col-sm-auto col-3 ms-2'>
+                   <button className="search-button bg-transparent border border-0 ps-3" ><FontAwesomeIcon icon={faMagnifyingGlass} size="lg" transform="down-3" /></button>
                 </div>
         </form>
         </div>
         {/* Results component*/}
-        <div className='col-6'>
+        <div className='col-sm-6 col-12'>
           <Results results={results} />
         </div>
         {/* Photos component*/}

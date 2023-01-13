@@ -2,28 +2,42 @@
     --firstmaincolor : #fff;
     --secondmaincolor : #000;
 }
+
 .SearchEngine{
-    margin: 50px auto;
-    height: 1000px;
-    max-width: 600px;
+    margin: 2rem auto;
+    max-width: 37.5rem;
     color: var(--firstmaincolor);
 }
+
 h1{
     font-weight: 700;
     margin-top: 1rem;
 }
 
 input.search-input{
-    padding-bottom: 3px;
+    padding-bottom: 0.2rem;
     outline: none;
 }
 
 input::placeholder { 
     color: var(--secondmaincolor);
-  }
+}
   
 button.search-button{
     color: var(--firstmaincolor);
+}
+
+@media only screen and (max-width: 577px){
+   
+    .SearchEngine{
+        max-width: 18.75rem;
+        color: var(--firstmaincolor);
+    }
+    
+    h1{
+        font-size: 2.4rem;
+    }
+    
 }
 
 
