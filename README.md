@@ -1,4 +1,4 @@
-REACT APP 
+REACT DICTIONARY APP 
 
 https://sensational-zuccutto-be1fc8.netlify.app/
 
