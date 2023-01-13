@@ -3,6 +3,8 @@ import Results from './Results';
 import "./SearchEngine.css";
 import axios from 'axios';
 import Photos from "./Photos";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchEngine (props) {
   const [loaded , setLoaded] = useState(false);
@@ -64,8 +66,8 @@ if(loaded){
                 <div className='col-8'>
                    <input type='text' placeholder='  Type here...' className="search-input border border-light rounded-4" autoFocus={true} onChange={updateWord} />
                 </div>
-                <div className='col-4'>
-                   <button  className="search-button border border-light border-3 rounded-4 ">Search</button>
+                <div className='col-auto'>
+                   <button className="search-button bg-transparent border border-0 ps-3" ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </div>
         </form>
         </div>

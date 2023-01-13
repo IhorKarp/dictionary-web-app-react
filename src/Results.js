@@ -7,10 +7,10 @@ import Transcription from './Transcription';
 export default function Results (props){
     if(props.results){
     return (
-        <div className='container Results'>
+        <div className='container Results p-0'>
                 <div className='row'>
                     {/* Word  and Phonetics*/}
-                    <div className='col-12' align='center'>
+                    <div className='col-12 mt-4' align='center'>
                         <h2 className='keyword' >{props.results.word}
                          <span >
                           {props.results.phonetics.map((phonetic, index)=> {

@@ -15,6 +15,7 @@ h1{
 
 input.search-input{
     padding-bottom: 3px;
+    outline: none;
 }
 
 input::placeholder { 
@@ -22,13 +23,8 @@ input::placeholder {
   }
   
 button.search-button{
-    background-color: var(--firstmaincolor);
-    padding: 2px 15px;
+    color: var(--firstmaincolor);
 }
 
-button.search-button:hover{
-    color: var(--firstmaincolor);
-    background-color: var(--secondmaincolor);
-    
-}
+
   
