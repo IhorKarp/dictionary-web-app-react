@@ -56,16 +56,16 @@ export default function SearchEngine (props) {
 if(loaded){
     return (
         <div className='SearchEngine'>
-        <div className="container border border-light">
+        <div className="container border border-light border-3 rounded-4">
       <div className='row'>
         <div className='col-6 text-center'>
-          <h2>Search Words</h2>
-            <form className='row' onSubmit={handleSubmit}>
-                <div className='col-9'>
-                   <input type='text' placeholder='food' className="search-input" autoFocus={true} onChange={updateWord} />
+          <h1>Search Words</h1>
+            <form className='row mt-3' onSubmit={handleSubmit}>
+                <div className='col-8'>
+                   <input type='text' placeholder='  Type here...' className="search-input border border-light rounded-4" autoFocus={true} onChange={updateWord} />
                 </div>
-                <div className='col-3'>
-                   <button  className="button-input rounded ">Search</button>
+                <div className='col-4'>
+                   <button  className="search-button border border-light border-3 rounded-4 ">Search</button>
                 </div>
         </form>
         </div>
